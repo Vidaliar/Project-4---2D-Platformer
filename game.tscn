@@ -1,0 +1,148 @@
+[gd_scene load_steps=19 format=3 uid="uid://cfs50u50qdowv"]
+
+[ext_resource type="Script" path="res://Player/Player.gd" id="1_f4rv4"]
+[ext_resource type="Texture2D" uid="uid://cp6txx7qkrhri" path="res://Assets/hero_spritesheet.png" id="1_k8eba"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ppv7v"]
+size = Vector2(1152, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h3tvn"]
+atlas = ExtResource("1_k8eba")
+region = Rect2(160, 282, 80, 94)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vf2d4"]
+atlas = ExtResource("1_k8eba")
+region = Rect2(80, 282, 80, 94)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yptbe"]
+atlas = ExtResource("1_k8eba")
+region = Rect2(0, 282, 80, 94)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ka3i0"]
+atlas = ExtResource("1_k8eba")
+region = Rect2(0, 0, 80, 94)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lidc6"]
+atlas = ExtResource("1_k8eba")
+region = Rect2(0, 282, 80, 94)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kak86"]
+atlas = ExtResource("1_k8eba")
+region = Rect2(80, 282, 80, 94)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o7jnm"]
+atlas = ExtResource("1_k8eba")
+region = Rect2(160, 282, 80, 94)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5yvvq"]
+atlas = ExtResource("1_k8eba")
+region = Rect2(0, 94, 80, 94)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aw2ri"]
+atlas = ExtResource("1_k8eba")
+region = Rect2(80, 94, 80, 94)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qn26k"]
+atlas = ExtResource("1_k8eba")
+region = Rect2(160, 94, 80, 94)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ce5ev"]
+atlas = ExtResource("1_k8eba")
+region = Rect2(240, 94, 80, 94)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3ry6"]
+atlas = ExtResource("1_k8eba")
+region = Rect2(320, 94, 80, 94)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2434q"]
+atlas = ExtResource("1_k8eba")
+region = Rect2(400, 94, 80, 94)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xmwra"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h3tvn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vf2d4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yptbe")
+}],
+"loop": false,
+"name": &"Falling",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ka3i0")
+}],
+"loop": false,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lidc6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kak86")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o7jnm")
+}],
+"loop": false,
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5yvvq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aw2ri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qn26k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ce5ev")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3ry6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2434q")
+}],
+"loop": true,
+"name": &"Move",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_104ob"]
+size = Vector2(37, 69)
+
+[node name="Game" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(579, 397)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_ppv7v")
+metadata/_edit_group_ = true
+
+[node name="Player" type="CharacterBody2D" parent="."]
+script = ExtResource("1_f4rv4")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Player"]
+sprite_frames = SubResource("SpriteFrames_xmwra")
+animation = &"Move"
+frame_progress = 0.270408
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(-1.5, 7.5)
+shape = SubResource("RectangleShape2D_104ob")
